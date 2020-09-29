@@ -1,10 +1,6 @@
 import nltk
-
-nltk.download('webtext')
-from nltk import word_tokenize
-from nltk.util import ngrams
-from collections import Counter
 import pandas as pd
+from nltk.util import ngrams
 
 # Corpus 1 === Monty Python and the Holy Grail Corpus
 e_text = nltk.corpus.webtext.words('grail.txt')
@@ -59,9 +55,9 @@ N = 1
 x = 0
 
 text = "ARTHUR : Then I dub you Sir Bedevere , Knight of the Round Table NARRATOR : The wise Sir Bedevere was the first to join King Arthur ' s knights , but other illustrious names were soon to follow : Sir Lancelot the Brave ; Sir Gallahad the Pure ; and Sir Robin the - not - quite - so - brave - as - Sir - Lancelot , who had nearly fought the Dragon of Angnor , who had nearly stood up to the vicious Chicken of Bristol , and who had personally wet himself at the Battle of Badon Hill ; and the aptly named Sir Not - appearing - in - this - film ."
-testset = nltk.word_tokenize(text)
+test_set = nltk.word_tokenize(text)
 
-for w in testset:
+for w in test_set:
     if w in result_unigrams:
         N = N + 1
         perplexity = perplexity * (1 / result_unigrams[x])
