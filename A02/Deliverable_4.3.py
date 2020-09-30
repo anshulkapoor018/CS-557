@@ -1,8 +1,29 @@
 import nltk
 import pandas as pd
 from nltk.util import ngrams
-def main():  
 
+
+def compare_u(z, o, unigrams_res):
+    unigrams_count = 0
+    for key1, value1 in z.items():
+        for key2, value2 in o.items():
+            if key1 == key2:
+                unigrams_res.loc[unigrams_count] = [key1, value1, value2]
+                unigrams_count = unigrams_count + 1
+    return unigrams_res
+
+
+def compare_b(d, l, bigrams_res):
+    bigrams_count = 0
+    for key3, value3 in d.items():
+        for k4, v4 in l.items():
+            if key3 == k4:
+                bigrams_res.loc[bigrams_count] = [key3, value3, v4]
+                bigrams_count = bigrams_count + 1
+    return bigrams_res
+
+
+def main():
     y = nltk.corpus.webtext.words('grail.txt')
     e_uni = ngrams(y, 1)
     e_bi = ngrams(y, 2)
@@ -23,7 +44,7 @@ def main():
     unigrams_res = pd.DataFrame(columns=cols)
     bigrams_res = pd.DataFrame(columns=cols)
 
-    unigrams_res = compare_u(z,o, unigrams_res)
+    unigrams_res = compare_u(z, o, unigrams_res)
     unigrams_res = unigrams_res.sort_values('Corpus 1 Value')
     print(unigrams_res[-5:][:])
 
@@ -48,28 +69,8 @@ def main():
 
     per = pow(per, 1 / float(N))
 
-
-def compare_u(z, o, unigrams_res):
-    unigrams_count = 0
-    for key1, value1 in z.items():
-        for key2, value2 in o.items():
-            if key1 == key2:
-                unigrams_res.loc[unigrams_count] = [key1, value1, value2]
-                unigrams_count = unigrams_count + 1
-    return unigrams_res
-
-
-def compare_b(d, l, bigrams_res):
-    bigrams_count = 0    
-    for key3, value3 in d.items():
-        for k4, v4 in l.items():
-            if key3 == k4:
-                bigrams_res.loc[bigrams_count] = [key3, value3, v4]
-                bigrams_count = bigrams_count + 1
-    return bigrams_res
-
+    print(f"Perplexity: {per}")
 
 
 if __name__ == '__main__':
     main()
-
