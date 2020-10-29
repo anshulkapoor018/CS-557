@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+
+__author__ = "Anshul Kapoor(10456388)| " \
+             "Pranay Singh(10455251) | " \
+             "Himanshu Bishnoi(10451752)"
+
 import re
 from gensim.models import Word2Vec
 from nltk.corpus import gutenberg
