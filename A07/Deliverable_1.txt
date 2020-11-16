@@ -1,0 +1,46 @@
+To get an idea about how difficult it is to unambiguously identify parts-of-speech select several words
+1. that can be a noun, verb, adjective, and adverb (see here (Links to an external site.) for instances),
+2. find their high frequency senses using WordNet,
+3. examine their definitions and example uses, and
+
+Solution:
+        * Best
+            * noun - (7) they did their best, beat the best of them
+            * verb - (1) to best the competition
+            * adjective - (300+) the best film of the year, the best solution
+            * adverb - (100+) he played best after a couple of martinis
+        * Better
+            * noun - (1) a change for the better
+            * verb - (3) she bettered her own record
+            * adjective - (100+) you're a better man, a better coat
+            * adverb - (100+) She had never sung better, I know better
+        * Bitter
+            * noun -
+            * verb -
+            * adjective - (31) bitter about the divorce, bitter words, bitter truth
+            * adverb - it was bitterly cold, bitter cold
+        * Broadside
+            * noun - (1) the ship was broadside to the dock
+            * verb - her car broad-sided mine
+            * adjective - a broadside attack
+            * adverb - the train hit the truck broadside
+        * Clean
+            * noun - (1) clean and jerk
+            * verb - (22) clean the stove, the dentist cleaned my teeth, clean up before dinner
+            * adjective - (22) children with clean shining faces, a clean bill of health, clean water
+            * adverb - (1) clean forgot the appointment
+        * Clear
+            * noun - investigation showed that he was in the clear
+            * verb - (32) clear your desk, clear a path
+            * adjective - (70) a clear and present danger, a clear explanation, clear water
+            * adverb - (3) read the book clear to the end, slept clear through the night
+
+4. try to generate some rules for how to determine as to when they are a noun, verb, adjective, or adverb from their context.
+
+Solution:
+        noun &rarr; Det noun VP
+        noun &rarr; VP noun
+        verb &rarr; NP verb NP
+        adjective &rarr; Det adjective NP VP
+        adverb &rarr; adverb VP
+        adverb &rarr; adverb adjective NP
