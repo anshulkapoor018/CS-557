@@ -4,17 +4,18 @@ __author__ = "Anshul Kapoor(10456388)| " \
              "Pranay Singh(10455251) | " \
              "Himanshu Bishnoi(10451752)"
 
-
 import nltk
 import nltk.corpus
 from nltk.corpus import brown
 from nltk.text import Text
+
 
 def posTag():
     """ Your Turn Pg 180 Chapter 5 """
     print("\n*** Your Turn Pg 180 Chapter 5 Output ***")
     text = nltk.word_tokenize("I want to read. Good read!")
     print(nltk.pos_tag(text))
+
 
 def tagged_words():
     """ Your Turn Pg 184 Chapter 5 """
@@ -33,6 +34,20 @@ def tagged_words():
     percnt = total * 100 / percent
     print(percnt)
 
+
+def FreqDist():
+    """ Your Turn Pg 186 Chapter 5 """
+    print("\n*** Your Turn Pg 186 Chapter 5 Output ***")
+    brown_news_tagged = brown.tagged_words(categories='news', tagset='universal')
+    tag_fd = nltk.FreqDist(tag for (word, tag) in brown_news_tagged)
+    tag_fd.keys()
+
+    wsj = nltk.corpus.treebank.tagged_words(tagset='universal')
+    word_tag_fd = nltk.FreqDist(wsj)
+    # [word + "/" + tag for (word, tag) in word_tag_fd if tag.startswith('V')]
+    cfd2 = nltk.ConditionalFreqDist((tag, word) for (word, tag) in wsj)
+    s = cfd2['PRT'].keys()
+    print(s)
 
 def ConditionalFreqDist():
     """ Your Turn Pg 189 Chapter 5 """
@@ -55,7 +70,7 @@ def main():
     """ Main function which is used as an interface """
     posTag()  # Your Turn Pg 180 Chapter 5
     tagged_words()  # Your Turn Pg 184 Chapter 5
-    # FreqDist()  # Your Turn Pg 186 Chapter 5
+    FreqDist()  # Your Turn Pg 186 Chapter 5
     ConditionalFreqDist()  # Your Turn Pg 189 Chapter 5
 
 
